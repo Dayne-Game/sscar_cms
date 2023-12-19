@@ -9,41 +9,48 @@ function HomeScreen() {
     <>
       <div className="feature_section">
 
-      <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={7000} showStatus={false} swipeable={false}>
-        <div className="carousel_container">
-          <div className="carousel_overlay"></div>
-          <img src={TEST} alt="placeholder" />
+        <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={7000} showStatus={false} swipeable={false}>
+          <div className="carousel_container">
+            <div className="carousel_overlay"></div>
+            <img src={TEST} alt="placeholder" />
 
-          <div className="carousel_content">
-            <h1 className="display-4">Burger King Series 2023/2024</h1>
-            <p>Random description of what is going on</p>
-            <button className="btn btn-outline-light">View Post</button>
+            <div className="carousel_content_container">
+              <div className="carousel_content">
+                <h1 className="display-4 fw-normal">Burger King Series 2023/2024</h1>
+                <h5 className="mb-4">Random description of what is going on</h5>
+                <button className="btn btn-outline-light">View Post</button>
+              </div>
+            </div>
+
+
           </div>
+          <div className="carousel_container">
+            <div className="carousel_overlay"></div>
+            <img src={TEST2} alt="placeholder" />
 
-        </div>
-        <div className="carousel_container">
-          <div className="carousel_overlay"></div>
-          <img src={TEST2} alt="placeholder" />
+            <div className="carousel_content_container">
+              <div className="carousel_content">
+                <h1 className="display-4">Bernie Harding back onboard!</h1>
+                <p>Random description of what is going on</p>
+                <button className="btn btn-outline-light">View Post</button>
+              </div>
+            </div>
 
-          <div className="carousel_content">
-            <h1 className="display-4">Bernie Harding back onboard!</h1>
-            <p>Random description of what is going on</p>
-            <button className="btn btn-outline-light">View Post</button>
           </div>
+          <div className="carousel_container">
+            <div className="carousel_overlay"></div>
+            <img src="https://via.placeholder.com/1500x500" alt="placeholder" />
 
-        </div>
-        <div className="carousel_container">
-          <div className="carousel_overlay"></div>
-          <img src="https://via.placeholder.com/1500x500" alt="placeholder" />
+            <div className="carousel_content_container">
+              <div className="carousel_content">
+                <h1 className="display-4">Revised 13 Round Calendar!</h1>
+                <p>Random description of what is going on</p>
+                <button className="btn btn-outline-light">View Post</button>
+              </div>
+            </div>
 
-          <div className="carousel_content">
-            <h1 className="display-4">Revised 13 Round Calendar!</h1>
-            <p>Random description of what is going on</p>
-            <button className="btn btn-outline-light">View Post</button>
           </div>
-
-        </div>
-      </Carousel>
+        </Carousel>
 
       </div>
 
