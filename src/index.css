@@ -18,6 +18,8 @@ a {
 .feature_section {
     margin-top: -70px;
     height: 90vh;
+
+    background: #000;
 }
 
 .header {
@@ -99,6 +101,16 @@ a {
     background-color: #333;
 }
 
+.post_feature img {
+    height: 90vh;
+
+    width: auto;
+
+    object-fit: cover;
+
+    position: relative;
+}
+
 .carousel .slide img {
     height: 90vh;
     /* change this to whatever you want */
@@ -109,7 +121,7 @@ a {
     position: relative;
 }
 
-.carousel_container {
+.carousel_container, .post_feature {
     position: relative;
 
     display: flex;
@@ -128,7 +140,7 @@ a {
     z-index: 1;
 }
 
-.carousel_content_container {
+.carousel_content_container, .post_feature_content_container {
     position: absolute;
     top: 40;
     width: 100%;
@@ -136,7 +148,7 @@ a {
     z-index: 5;
 }
 
-.carousel_content {
+.carousel_content, .post_feature_content {
     width: 100%;
     max-width: 1800px;
 

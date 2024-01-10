@@ -15,6 +15,9 @@ import ResultScreen from './screens/ResultScreen.jsx';
 import DriverScreen from './screens/DriverScreen.jsx';
 import DriverProfileScreen from './screens/DriverProfileScreen.jsx';
 import ScheduleScreen from './screens/ScheduleScreen.jsx';
+import { Provider } from 'react-redux';
+import store from './app/store.js';
+import SinglePostScreen from './screens/SinglePostScreen.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,12 +27,15 @@ const router = createBrowserRouter(
       <Route path="/drivers" element={<DriverScreen />} />
       <Route path="/driver/:id" element={<DriverProfileScreen />} />
       <Route path="/schedule" element={<ScheduleScreen />} />
+      <Route path="/news/:id" element={<SinglePostScreen />} />
     </Route>
   )
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>,
+  </Provider>
 )

@@ -1,61 +1,48 @@
 import { Carousel } from "react-responsive-carousel";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
-import TEST from '../assets/test.jpg';
-import TEST2 from '../assets/test2.jpeg';
+import { useEffect, useState } from "react";
+import { API_URL } from "../config/api_url";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts, selectPosts } from "../features/posts/postSlice";
+import { Link } from "react-router-dom";
 
 function HomeScreen() {
+  const dispatch = useDispatch();
+  const posts = useSelector(selectPosts);
+
+  useEffect(() => {
+    if(posts.length === 0) {
+      dispatch(getPosts()).then(action => {
+        console.log(action);
+      })
+    }
+  }, [])
+
   return (
     <>
       <div className="feature_section">
-
         <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={7000} showStatus={false} swipeable={false}>
-          <div className="carousel_container">
-            <div className="carousel_overlay"></div>
-            <img src={TEST} alt="placeholder" />
+          {posts.length > 0 && posts.map((post, index) => (
+            post.status === 'published' && (
+              <div className="carousel_container" key={index}>
+                <div className="carousel_overlay"></div>
+                <img src={`${API_URL}/${post.featured_image.path}`} alt={post.featured_image.alt} />
 
-            <div className="carousel_content_container">
-              <div className="carousel_content">
-                <h1 className="display-4 fw-normal">Burger King Series 2023/2024</h1>
-                <h5 className="mb-4">Random description of what is going on</h5>
-                <button className="btn btn-outline-light">View Post</button>
+                <div className="carousel_content_container">
+                  <div className="carousel_content">
+                    <h1 className="display-4 fw-normal">{post.title}</h1>
+                    <h5 className="mb-4">{post.subtitle}</h5>
+                    <Link to={`/news/${post._id}`} className="btn btn-outline-light">View Post</Link>
+                  </div>
+                </div>
               </div>
-            </div>
-
-
-          </div>
-          <div className="carousel_container">
-            <div className="carousel_overlay"></div>
-            <img src={TEST2} alt="placeholder" />
-
-            <div className="carousel_content_container">
-              <div className="carousel_content">
-                <h1 className="display-4">Bernie Harding back onboard!</h1>
-                <p>Random description of what is going on</p>
-                <button className="btn btn-outline-light">View Post</button>
-              </div>
-            </div>
-
-          </div>
-          <div className="carousel_container">
-            <div className="carousel_overlay"></div>
-            <img src="https://via.placeholder.com/1500x500" alt="placeholder" />
-
-            <div className="carousel_content_container">
-              <div className="carousel_content">
-                <h1 className="display-4">Revised 13 Round Calendar!</h1>
-                <p>Random description of what is going on</p>
-                <button className="btn btn-outline-light">View Post</button>
-              </div>
-            </div>
-
-          </div>
+            )
+          ))}
         </Carousel>
-
       </div>
 
 
-      <div className="carousel_wrapper bg-dark"></div>
+      {/* <div className="carousel_wrapper bg-dark"></div> */}
 
       <div className="event_countdown bg-warning">
         <div className="container">
