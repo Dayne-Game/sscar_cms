@@ -10,20 +10,23 @@ function HomeScreen() {
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
 
+  const [publishedPosts, setPublishedPosts] = useState([]);
+
   useEffect(() => {
-    if(posts.length === 0) {
-      dispatch(getPosts()).then(action => {
-        console.log(action);
-      })
-    }
+    dispatch(getPosts()).then(action => {
+      if (action.type === 'post/getAllPosts/fulfilled') {
+        const publishedPosts = action.payload.filter(post => post.status === 'published');
+        setPublishedPosts(publishedPosts);
+      }
+    })
   }, [])
 
   return (
     <>
       <div className="feature_section">
-        <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={7000} showStatus={false} swipeable={false}>
-          {posts.length > 0 && posts.map((post, index) => (
-            post.status === 'published' && (
+        {publishedPosts.length > 0 && (
+          <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={7000} showStatus={false} swipeable={false}>
+            {publishedPosts.map((post, index) => (
               <div className="carousel_container" key={index}>
                 <div className="carousel_overlay"></div>
                 <img src={`${API_URL}/${post.featured_image.path}`} alt={post.featured_image.alt} />
@@ -36,9 +39,9 @@ function HomeScreen() {
                   </div>
                 </div>
               </div>
-            )
-          ))}
-        </Carousel>
+            ))}
+          </Carousel>
+        )}
       </div>
 
 
