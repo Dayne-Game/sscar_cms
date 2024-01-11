@@ -15,8 +15,6 @@ const SinglePostScreen = () => {
         dispatch(getPost(id))
     }, [])
 
-    console.log(post, status);
-
     return (
         status === 'LOADING' ? <h1>Loading...</h1> : (
             <div>
