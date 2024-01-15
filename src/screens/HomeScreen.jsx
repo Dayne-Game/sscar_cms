@@ -24,24 +24,22 @@ function HomeScreen() {
   return (
     <>
       <div className="feature_section">
-        {publishedPosts.length > 0 && (
-          <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={7000} showStatus={false} swipeable={false}>
-            {publishedPosts.map((post, index) => (
-              <div className="carousel_container" key={index}>
-                <div className="carousel_overlay"></div>
-                <img src={`${API_URL}/${post.featured_image.path}`} alt={post.featured_image.alt} />
+        <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={7000} showStatus={false} swipeable={false}>
+          {publishedPosts.map((post, index) => (
+            <div className="carousel_container" key={index}>
+              <div className="carousel_overlay"></div>
+              <img src={`${API_URL}/${post.featured_image.path}`} alt={post.featured_image.alt} />
 
-                <div className="carousel_content_container">
-                  <div className="carousel_content">
-                    <h1 className="display-4 fw-normal">{post.title}</h1>
-                    <h5 className="mb-4">{post.subtitle}</h5>
-                    <Link to={`/news/${post._id}`} className="btn btn-outline-light">View Post</Link>
-                  </div>
+              <div className="carousel_content_container">
+                <div className="carousel_content">
+                  <h1 className="display-4 fw-normal">{post.title}</h1>
+                  <h5 className="mb-4">{post.subtitle}</h5>
+                  <Link to={`/news/${post._id}`} className="btn btn-outline-light">View Post</Link>
                 </div>
               </div>
-            ))}
-          </Carousel>
-        )}
+            </div>
+          ))}
+        </Carousel>
       </div>
 
 

@@ -111,7 +111,7 @@ a {
     position: relative;
 }
 
-.carousel .slide img {
+.carousel_container img {
     height: 90vh;
     /* change this to whatever you want */
     width: auto;

@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
 import HomeScreen from './screens/HomeScreen'
 import ResultScreen from './screens/ResultScreen'
